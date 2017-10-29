@@ -10,20 +10,20 @@
 
 defined('_JEXEC') or die;
 
-echo '<pre>', print_r('aaaa', true), '</pre>';
-?>
-<script>
-	(function ($) {
-		$(document).ready(function() {
-			console.log('aaa');
-			$.ajax({
-				type: 'POST',
-				dataType: 'json',
-				url: '/index.php?option=com_ajax&module=freelancehunt_profile&format=json',
-				data: {},
-				success: function (response) {
-				}
-			});
-		});
-	})(jQuery);
-</script>
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Helper\ModuleHelper;
+
+if ($params->get('ajax', 0))
+{
+	$Itemid = Factory::getApplication()->input->get('Itemid');
+	HTMLHelper::_('jquery.framework');
+	HTMLHelper::_('script', 'media/mod_freelancehunt_profile/ajax.js', array('version' => 'auto'));
+	echo '<div data-mod-freelancehunt-profile="' . $module->id . ', ' . $Itemid . '"></div>';
+}
+else
+{
+	include_once(__DIR__ . '/helper.php');
+	$profile = modFreelancehuntProfileHelper::getProfile($params);
+	require ModuleHelper::getLayoutPath('mod_freelancehunt_profile', $params->get('layout', 'default'));
+}
