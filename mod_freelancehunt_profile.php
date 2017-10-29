@@ -18,7 +18,7 @@ if ($params->get('ajax', 0))
 {
 	$Itemid = Factory::getApplication()->input->get('Itemid');
 	HTMLHelper::_('jquery.framework');
-	HTMLHelper::_('script', 'media/mod_freelancehunt_profile/ajax.js', array('version' => 'auto'));
+	HTMLHelper::_('script', 'media/mod_freelancehunt_profile/ajax.min.js', array('version' => 'auto'));
 	echo '<div data-mod-freelancehunt-profile="' . $module->id . ', ' . $Itemid . '"></div>';
 }
 else

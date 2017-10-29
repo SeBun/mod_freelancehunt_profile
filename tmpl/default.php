@@ -35,7 +35,7 @@ defined('_JEXEC') or die;
 						<span class="text-error">
 							<i class="icon icon-thumbs-down"></i><?php echo $profile->get('negative_reviews', 0); ?>
 						</span>
-						<a href="<?php echo $profile->get('url_private_message', '');?>" target="_blank">
+						<a href="<?php echo $profile->get('url_private_message', ''); ?>" target="_blank">
 							<i class="icon icon-mail"></i>
 						</a>
 					</div>
