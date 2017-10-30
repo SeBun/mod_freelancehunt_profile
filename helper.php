@@ -53,13 +53,13 @@ class modFreelancehuntProfileHelper
 		// Send request
 		$url  = 'https://api.freelancehunt.com/profiles/me';
 		$curl = curl_init();
-		curl_setopt_array($curl, [
+		curl_setopt_array($curl, array(
 			CURLOPT_RETURNTRANSFER => 1,
 			CURLOPT_USERPWD        => trim($params->get('token', '', 'raw')) . ':' .
 				base64_encode(hash_hmac('sha256', $url . 'GET', trim($params->get('secret', '', 'raw')),
 					true)),
 			CURLOPT_URL            => $url
-		]);
+		));
 		$profile = new Registry(curl_exec($curl));
 		curl_close($curl);
 
